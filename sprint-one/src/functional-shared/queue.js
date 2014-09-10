@@ -3,17 +3,17 @@ var makeQueue = function(){
   queue.storage = {};
   queue.first = 0;
   queue.nextOne = 0;
-  _.extend(queue,queueMethods);
+  _.extend(queue,makeQueue.queueMethods);
   return queue;
 
 };
 
-var queueMethods = {};
-queueMethods.enqueue = function(value) {
+makeQueue.queueMethods = {};
+makeQueue.queueMethods.enqueue = function(value) {
   this.storage[this.nextOne] = value;
   this.nextOne ++;
 }
-queueMethods.dequeue = function() {
+makeQueue.queueMethods.dequeue = function() {
   if (this.nextOne > this.first){
     var temp = this.storage[this.first];
     this.storage[this.first] = undefined;
@@ -21,9 +21,7 @@ queueMethods.dequeue = function() {
     return temp;
   }
 }
-queueMethods.size = function(){
+makeQueue.queueMethods.size = function(){
   return this.nextOne - this.first;
 }
-
-
 
