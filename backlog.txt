@@ -1,0 +1,8 @@
+
+Address the errors in Stack and Queue tests
+
+Test that value property exists in the nodes for the linked list
+
+Figure out what to do when there are no elements in linked list and remove is called
+
+Write all aditional tests for set class
