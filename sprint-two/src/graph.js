@@ -1,4 +1,5 @@
 var Graph = function(){
+  this.storage = {};
 };
 
 Graph.prototype.addNode = function(newNode, toNode){

@@ -5,4 +5,8 @@ Test that value property exists in the nodes for the linked list
 
 Figure out what to do when there are no elements in linked list and remove is called
 
-Write all aditional tests for set class
+Write all additional tests for set class
+Write all additional tests for hash class
+Write all additional tests for tree class
+
+hash = hash & hash
