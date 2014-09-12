@@ -1,5 +1,10 @@
-var makeBinarySearchTree = function(value){
+var makeBinarySearchTree = function(value, depth){
   var tree = Object.create(makeBinarySearchTree.prototype)
+  if (depth === undefined) {
+    tree.depth = 0;
+  } else {
+    tree.depth = depth;
+  }
   tree.value = value;
   tree.left = null;
   tree.right = null;
@@ -11,7 +16,7 @@ makeBinarySearchTree.prototype.insert = function(n) {
   if (n < this.value) {
 
     if (this.left === null) {
-      this.left = makeBinarySearchTree(n);
+      this.left = makeBinarySearchTree(n, this.depth+1);
     } else {
       this.left.insert(n);
     }
@@ -19,7 +24,7 @@ makeBinarySearchTree.prototype.insert = function(n) {
   } else if (n > this.value) {
 
     if (this.right === null) {
-      this.right = makeBinarySearchTree(n);
+      this.right = makeBinarySearchTree(n, this.depth+1);
     } else {
       this.right.insert(n);
     }
@@ -68,10 +73,10 @@ makeBinarySearchTree.prototype.breadthFirstLog = function(c) {
 }
 
 
-////Autoresizing - if maxdepth > 2* min depth - breadthfirstlog where
+////Autoresizing - if maxdepth > 2* min depth - execute breadthfirstlog where
 //function puts nodes in array. Some sort of middle out sorting function.
 // Then recreate tree.
-//May not work - idea 2: traverse tree and count depths at ends
+//May not work - idea 2: traverse tree and count depths at ends, appending to an array. Find max and min.
 //, maybe using a callback in depthfirstlog
 
 
