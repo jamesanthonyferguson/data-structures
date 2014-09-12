@@ -51,6 +51,10 @@ makeBinarySearchTree.prototype.depthFirstLog = function(c) {
 
 }
 
+makeBinarySearchTree.prototype.breadthFirstLog = function(c) {
+  //
+}
+
 /*
  * Complexity: What is the time complexity of the above functions?
  * insert, contains, and depthFirstLog have worst case complexity of O(n)

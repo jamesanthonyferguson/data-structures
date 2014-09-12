@@ -7,6 +7,6 @@ Figure out what to do when there are no elements in linked list and remove is ca
 
 Write all additional tests for set class
 Write all additional tests for hash class
-Write all additional tests for tree class
+Write all additional tests for the binary tree class
 
 hash = hash & hash

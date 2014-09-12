@@ -41,4 +41,40 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  //Extra Credit
+
+  it('should have methods named "removeFromParent", "traverse", and a property named "parent"', function() {
+    expect(tree.removeFromParent).to.be.a("function");
+    expect(tree.traverse).to.be.a("function");
+    expect(tree.hasOwnProperty("parent")).to.equal(true);
+  });
+
+  it('should recognise parent', function(){
+    tree.addChild(5);
+    tree.children[0].addChild(6);
+    expect(tree.children[0].children[0].parent.value).to.equal(5);
+  })
+
+  it('should dissociate tree from parent, and return tree', function(){
+    tree.addChild(5);
+    tree.children[0].addChild(6);
+    tree.children[0].children[0].addChild(7);
+    var tree2 = tree.removeFromParent(tree.children[0].children[0]);
+    expect(tree2.parent).to.equal(null);
+    expect(tree.children[0].children).to.equal(undefined)
+  })
+
+  it('should perform iterator as it traverses tree', function(){
+    var doubleValue = function(input) {
+      return input*2;
+    }
+    tree.addChild(5);
+    tree.children[0].addChild(6);
+    tree.children[0].children[0].addChild(7);
+    tree.traverse(doubleValue);
+    expect(tree.children[0].value).to.equal(10);
+    expect(tree.children[0].children[0].value).to.equal(12);
+    expect(tree.children[0].children[0].children[0].value).to.equal(14);
+  })
+
 });

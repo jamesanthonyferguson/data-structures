@@ -12,8 +12,7 @@ Graph.prototype.addNode = function(newNode, toNode){
       this.addEdge(newNode, toNodes[i]);
     }
   }
-  if(this._storage.length === 2 && toNode === undefined) {
-    debugger;
+  if(Object.keys(this._storage).length === 2 && toNode === undefined) {
     var nodes = Object.keys(this._storage);
     this.addEdge(nodes[0], nodes[1]);
   }
@@ -41,7 +40,12 @@ Graph.prototype.addEdge = function(fromNode, toNode){
 };
 
 Graph.prototype.removeEdge = function(fromNode, toNode){
-  _.filter(this._storage[fromNode], function(x) { return x !== toNode;});
+  this._storage[fromNode] = _.filter(this._storage[fromNode], function(x) {
+   return x !== toNode;
+  });
+  this._storage[toNode] = _.filter(this._storage[toNode], function(x) {
+    return x !== fromNode;
+  });
   if (this._storage[fromNode].length === 0) {
     this.removeNode(fromNode);
   }
@@ -50,6 +54,18 @@ Graph.prototype.removeEdge = function(fromNode, toNode){
   }
 };
 
+Graph.prototype.forEachNode = function(iterator) {
+  //traverses node
+  //performs iterator on each item
+  for (var key in this._storage) {
+    iterator(key);
+  }
+
+}
+
+
 /*
  * Complexity: What is the time complexity of the above functions?
+ * AddNode: Max = O(n) if multiple edges. removeNode: Max = O(n).
+ * getEdge: addEdge: O(1). removeEdge: O(n). forEachNode: O(n)
  */
