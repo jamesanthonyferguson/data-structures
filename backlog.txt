@@ -5,8 +5,15 @@ Test that value property exists in the nodes for the linked list
 
 Figure out what to do when there are no elements in linked list and remove is called
 
-Write all additional tests for set class
 Write all additional tests for hash class
 Write all additional tests for the binary tree class
 
 hash = hash & hash
+
+
+To Do: Extra Credit:
+Binary Search Tree Rebalance when max depth > 2* min depth
+Hashtable double in size when 75% filled
+Hashtable halve when <25% full
+Bloom filter
+Nightmare Mode

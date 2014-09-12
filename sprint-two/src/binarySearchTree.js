@@ -53,7 +53,27 @@ makeBinarySearchTree.prototype.depthFirstLog = function(c) {
 
 makeBinarySearchTree.prototype.breadthFirstLog = function(c) {
   //
+  var queue = [];
+  queue.push(this)
+  while (queue.length>0) {
+    if (queue[0].left !== null) {
+      queue.push(queue[0].left);
+    }
+    if (queue[0].right !== null) {
+      queue.push(queue[0].right)
+    }
+    c(queue[0].value)
+    queue.shift()
+  }
 }
+
+
+////Autoresizing - if maxdepth > 2* min depth - breadthfirstlog where
+//function puts nodes in array. Some sort of middle out sorting function.
+// Then recreate tree.
+//May not work - idea 2: traverse tree and count depths at ends
+//, maybe using a callback in depthfirstlog
+
 
 /*
  * Complexity: What is the time complexity of the above functions?
