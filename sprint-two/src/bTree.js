@@ -18,7 +18,7 @@ BTree.prototype.insert = function (val) {
       this.val2 = val;
     }
   } else if (val < this.val1) {
-    if (this.leftLink === undefined) {
+    if (this.leftLink === undefined //& final layer is full) {
       this.leftLink = new BTree(val, this);
     } else if (this.leftLink.val1 === undefined || this.leftLink.val1 === undefined) {
       this.left
