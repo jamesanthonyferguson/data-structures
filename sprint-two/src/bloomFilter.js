@@ -1,6 +1,6 @@
-var BloomFilter = function(limit) {
-  this.k = 4;
-  this.m = 100;
+var BloomFilter = function(k,m) {
+  this.k = k;
+  this.m = m;
   this.storage = [];
   for (var i = 0; i < this.m; i++) {
     this.storage[i] = 0;

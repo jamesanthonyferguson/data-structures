@@ -3,13 +3,13 @@ describe('bloomFilter', function() {
   var bloomFilter;
 
   beforeEach(function() {
-    bloomFilter = new BloomFilter(18);
+    bloomFilter = new BloomFilter(4,100);
   });
 
   it('should have the theoretical false positive rate', function() {
     var createRandomWord = function(length) {
       var word = '';
-      for (var x = 0; x < 9; x++) {
+      for (var x = 0; x < length; x++) {
         word += String.fromCharCode(Math.floor(Math.random()*26) + 97);
       }
       return word;
@@ -45,6 +45,7 @@ describe('bloomFilter', function() {
     console.log("Total false positives: " + falsePositives);
     console.log("False positive Rate: " + falsePositiveRate);
     console.log("Theoretical false positive rate: " +  theoreticalRate);
+    console.log("We are off by: " + Math.abs(Math.floor((falsePositiveRate/theoreticalRate - 1)*100)) + "%")
 
     expect((theoreticalRate > falsePositiveRate*0.9)&&(theoreticalRate < falsePositiveRate*1.1)).to.equal(true);
   });
