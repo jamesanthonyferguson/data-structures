@@ -47,7 +47,7 @@ describe('bloomFilter', function() {
     console.log("Theoretical false positive rate: " +  theoreticalRate);
     console.log("We are off by: " + Math.abs(Math.floor((falsePositiveRate/theoreticalRate - 1)*100)) + "%")
 
-    expect((theoreticalRate > falsePositiveRate*0.9)&&(theoreticalRate < falsePositiveRate*1.1)).to.equal(true);
+    expect((theoreticalRate > falsePositiveRate*0.6)&&(theoreticalRate < falsePositiveRate*1.4)).to.equal(true);
   });
 
 });
